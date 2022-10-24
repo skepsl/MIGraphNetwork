@@ -31,7 +31,7 @@ class Args:
 
         #  Model Params
         pars.add_argument('--nhead', default=10, type=int)
-        pars.add_argument('--d_model', default=1000, type=int)
+        pars.add_argument('--d_model', default=50, type=int)
         pars.add_argument('--num_layers', default=1, type=int)
         pars.add_argument('--nclass', default=2, type=int)
 
@@ -154,5 +154,5 @@ class Iterator(Dataset):
 
 if __name__ == '__main__':
     args = Args().get_args()
-    GetData(args).getSubjectData(3)
+    GetData(args).getSubjectData(1)
     pass
