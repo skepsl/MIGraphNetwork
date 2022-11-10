@@ -26,10 +26,10 @@ class Main:
         adj_test = graph.transform(x_test)
 
         # Save for re-run later
-        np.save(f'adj_train_{subject}_{fold}', adj_train)
-        np.save(f'adj_test_{subject}_{fold}', adj_test)
-        adj_train = np.load(f'adj_train_{subject}_{fold}.npy')
-        adj_test = np.load(f'adj_test_{subject}_{fold}.npy')
+        np.save(f'adjacency/adj_train_{subject}_{fold}', adj_train)
+        np.save(f'adjacency/adj_test_{subject}_{fold}', adj_test)
+        adj_train = np.load(f'adjacency/adj_train_{subject}_{fold}.npy')
+        adj_test = np.load(f'adjacency/adj_test_{subject}_{fold}.npy')
 
         train_iters = Iterator(x_train, y_train, adj_train)
         test_iters = Iterator(x_test, y_test, adj_test)
