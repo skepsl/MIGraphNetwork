@@ -96,7 +96,7 @@ class GetData:
         return x, y
 
     def _slidingWindow(self, x, y):
-        x = torch.asarray(x).unfold(step=self.args.d_model, size=self.args.d_model, dimension=1)
+        x = torch.tensor(x).unfold(step=self.args.d_model, size=self.args.d_model, dimension=1)
 
         y = repeat(y, 'h w -> h w s', s=x.shape[1])
         x = Rearrange('b w c s -> (b w) c s')(x)
