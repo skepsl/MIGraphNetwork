@@ -22,12 +22,12 @@ class Main:
         self.arg.test_len = x_test.shape[0]
 
         graph = GraphRepresentation(self.arg)
-        adj_train = graph.fit(x_train, y_train, rank=100)
+        adj_train, edges = graph.fit(x_train, y_train, rank=100)
         adj_test = graph.transform(x_test)
 
-        # Save for re-run later
         np.save(f'adjacency/adj_train_{subject}_{fold}', adj_train)
         np.save(f'adjacency/adj_test_{subject}_{fold}', adj_test)
+        np.save(f'adjacency/edges_{subject}_{fold}', edges)
         adj_train = np.load(f'adjacency/adj_train_{subject}_{fold}.npy')
         adj_test = np.load(f'adjacency/adj_test_{subject}_{fold}.npy')
 
