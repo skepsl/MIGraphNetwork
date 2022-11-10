@@ -60,6 +60,6 @@ if __name__ == '__main__':
     
     
     for subject in subjects:
-        for fold in range(10):
+        for fold in range(5):
             framework = Main()
             framework.fit(subject=subject, fold=fold)
