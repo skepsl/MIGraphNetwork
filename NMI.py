@@ -33,7 +33,7 @@ class GraphRepresentation:
 
         adjecency_train = np.einsum('ijk, jk -> ijk', NMI_train, edges)
 
-        return adjecency_train
+        return adjecency_train, self.edges
 
     def _edges(self, distance, rank):
         distance = np.asarray(distance)
