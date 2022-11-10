@@ -92,18 +92,7 @@ class GetData:
             std = np.std(xs[t])
             xs[t] = (xs[t] - m) / std
 
-        x, y = self._slidingWindow(xs.transpose((0, 2, 1)), y.transpose((1, 0)))
-        return x, y
-
-    def _slidingWindow(self, x, y):
-        x = torch.tensor(x).unfold(step=self.args.d_model, size=self.args.d_model, dimension=1)
-
-        y = repeat(y, 'h w -> h w s', s=x.shape[1])
-        x = Rearrange('b w c s -> (b w) c s')(x)
-
-        x = np.asarray(x)
-        y = np.asarray(y).reshape((y.shape[0]*y.shape[2], 1))
-        return x, y
+        return xs, y.transpose((1, 0))
 
     def _downloadData(self, subject_id):
         x, y, _ = self._source.download(subject_list=[subject_id])
