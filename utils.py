@@ -38,7 +38,7 @@ class Args:
         # Hyperparameter
         pars.add_argument('--device', default='cuda:0' if torch.cuda.is_available() else 'cpu', type=str)
         pars.add_argument('--lrate', default=0.005, type=float)
-        pars.add_argument('--iteration', default=100, type=int)
+        pars.add_argument('--iteration', default=50, type=int)
         pars.add_argument('--test_len', default=0, type=int)
         pars.add_argument('--batch', default=32, type=int)
         pars.add_argument('--num_workers', default=1, type=int)
