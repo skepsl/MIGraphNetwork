@@ -1,6 +1,6 @@
 import numpy as np
 
-from utils import Args, CrossValidation, Iterator
+from utils import Args, CrossValidation, Iterator, GetData
 from trainers import Train
 from torch.utils.data import DataLoader
 from NMI import GraphRepresentation
@@ -9,8 +9,10 @@ from NMI import GraphRepresentation
 class Main:
     def __init__(self):
         self.arg = Args().get_args()
+        
 
     def fit(self, subject, fold):
+        GetData(self.arg).getSubjectData(subject)
         self.arg.subject_id = subject
         self.arg.k_fold = fold
 
