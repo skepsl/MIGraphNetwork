@@ -5,12 +5,8 @@ from moabb.datasets import Lee2019_MI
 import scipy.io
 from scipy.signal import resample
 from sklearn.model_selection import KFold
-# from NMI import GraphRepresentation
 import torch
 from torch.utils.data import Dataset
-
-from einops.layers.torch import Rearrange
-from einops import repeat
 
 
 class Args:
@@ -31,17 +27,18 @@ class Args:
 
         #  Model Params
         pars.add_argument('--nhead', default=10, type=int)
-        pars.add_argument('--d_model', default=50, type=int)
+        pars.add_argument('--d_model', default=1000, type=int)
         pars.add_argument('--num_layers', default=1, type=int)
         pars.add_argument('--nclass', default=2, type=int)
 
         # Hyperparameter
         pars.add_argument('--device', default='cuda:0' if torch.cuda.is_available() else 'cpu', type=str)
         pars.add_argument('--lrate', default=0.005, type=float)
-        pars.add_argument('--iteration', default=50, type=int)
+        pars.add_argument('--iteration', default=100, type=int)
         pars.add_argument('--test_len', default=0, type=int)
         pars.add_argument('--batch', default=32, type=int)
         pars.add_argument('--num_workers', default=1, type=int)
+        pars.add_argument('--dataset', default='Lee', type=str)
 
         argset = pars.parse_args()
         return argset
@@ -143,5 +140,5 @@ class Iterator(Dataset):
 
 if __name__ == '__main__':
     args = Args().get_args()
-    GetData(args).getSubjectData(1)
+    GetData(args).getSubjectData(4)
     pass
