@@ -39,7 +39,11 @@ class Train:
                 self.best_performance = test_acc
                 self.save_parameter()
 
+            if test_acc == 1:
+                break
+
             print(f'Iteration: {iter} | Train Loss: {train_losses: .3f} | Test Loss: {test_loss: .3f} | Test Acc.: {test_acc: .3f} | Best. {self.best_performance: .3f}\n')
+        return self.best_performance
 
 
     def testing(self, val):
