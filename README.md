@@ -1,4 +1,3 @@
-# Team 10
 # Graph Representation for Neuroscience Dataset 
 
 ## Step
